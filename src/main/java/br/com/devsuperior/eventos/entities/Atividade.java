@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_atividade")
@@ -25,6 +27,9 @@ public class Atividade implements Serializable {
   @ManyToOne
   @JoinColumn(name = "categoria")
   private Categoria categoria;
+
+  @OneToMany(mappedBy = "atividade")
+  private Set<Bloco> blocos = new HashSet<>();
 
   public Atividade() {}
 
@@ -74,6 +79,10 @@ public class Atividade implements Serializable {
 
   public void setCategoria(Categoria categoria) {
     this.categoria = categoria;
+  }
+
+  public Set<Bloco> getBlocos() {
+    return blocos;
   }
 
   @Override
