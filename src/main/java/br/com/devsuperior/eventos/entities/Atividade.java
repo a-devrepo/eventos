@@ -16,7 +16,7 @@ public class Atividade implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private Integer id;
 
   private String nome;
 
@@ -33,7 +33,7 @@ public class Atividade implements Serializable {
 
   public Atividade() {}
 
-  public Atividade(Long id, String nome, String descricao, Double preco, Categoria categoria) {
+  public Atividade(Integer id, String nome, String descricao, Double preco, Categoria categoria) {
     this.id = id;
     this.nome = nome;
     this.descricao = descricao;
@@ -41,11 +41,11 @@ public class Atividade implements Serializable {
     this.categoria = categoria;
   }
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
