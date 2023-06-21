@@ -31,6 +31,13 @@ public class Atividade implements Serializable {
   @OneToMany(mappedBy = "atividade")
   private Set<Bloco> blocos = new HashSet<>();
 
+  @ManyToMany
+  @JoinTable(
+      name = "tb_atividade_participante",
+      joinColumns = @JoinColumn(name = "atividade_id"),
+      inverseJoinColumns = @JoinColumn(name = "participante_id"))
+  private Set<Participante> participantes = new HashSet<>();
+
   public Atividade() {}
 
   public Atividade(Integer id, String nome, String descricao, Double preco, Categoria categoria) {
@@ -83,6 +90,10 @@ public class Atividade implements Serializable {
 
   public Set<Bloco> getBlocos() {
     return blocos;
+  }
+
+  public Set<Participante> getParticipantes() {
+    return participantes;
   }
 
   @Override
