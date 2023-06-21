@@ -22,13 +22,18 @@ public class Atividade implements Serializable {
 
   private Double preco;
 
+  @ManyToOne
+  @JoinColumn(name = "categoria")
+  private Categoria categoria;
+
   public Atividade() {}
 
-  public Atividade(Long id, String nome, String descricao, Double preco) {
+  public Atividade(Long id, String nome, String descricao, Double preco, Categoria categoria) {
     this.id = id;
     this.nome = nome;
     this.descricao = descricao;
     this.preco = preco;
+    this.categoria = categoria;
   }
 
   public Long getId() {
@@ -61,6 +66,14 @@ public class Atividade implements Serializable {
 
   public void setPreco(Double preco) {
     this.preco = preco;
+  }
+
+  public Categoria getCategoria() {
+    return categoria;
+  }
+
+  public void setCategoria(Categoria categoria) {
+    this.categoria = categoria;
   }
 
   @Override
